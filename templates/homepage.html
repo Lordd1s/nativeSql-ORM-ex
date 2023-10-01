@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+
+    <header>
+        <span>Добро пожаловать!!!</span>
+    </header>
+
+    
+    {% if message %}
+        <span style="color: greenyellow; font-size: 1.5rem; text-align: center; margin: 1%;">{{ message }}</span>
+    {% else %}
+        <span style="color: red;font-size: 1.5rem; text-align: center; margin: 1%;">{{ error }}</span>
+    {% endif %}
+    
+    <main>
+        <span>Жалоба или предложение!</span>
+        <form action="{% url 'homepage' %}" method="post">
+            {% csrf_token %}
+            <label for="">Ваша имя</label>
+            <input type="text" name="name" id="">
+
+            <label for="">Почта или телефон (для обратной связи!)</label>
+            <input type="text" name="contact" id="">
+
+            <label for="">Тема</label>
+            <input type="text" name="title" placeholder="заголовок...">
+
+            <label for="">Описание</label>
+            <input type="text" name="desc" id="" placeholder="напишите здесь">
+
+            <label for="">Native / ORM</label>
+            <input type="checkbox" name="switch" id="">
+
+            <button type="submit">Отправить</button>
+        </form>
+    </main>
+
+    <footer>
+        <span>Copyright...</span>
+    </footer>
+
+</body>
+</html>
